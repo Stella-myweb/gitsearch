@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { MarkdownViewer } from '@/components/repository/MarkdownViewer'
 import { CurriculumBadge } from '@/components/repository/CurriculumBadge'
 import { RelatedProjects } from '@/components/repository/RelatedProjects'
+import { MetaBadges } from '@/components/repository/MetaBadges'
+import { ContentStudio } from '@/components/repository/ContentStudio'
 import { LoadingSpinner } from '@/components/common/Loading'
 import { ErrorState } from '@/components/common/ErrorState'
 import { getRepository, getReadme } from '@/services/github/repository'
@@ -14,6 +16,8 @@ import { GITHUB_USERNAME } from '@/config/env'
 import { getCurriculumMeta } from '@/data/curriculum'
 import { useRepositories } from '@/hooks/useRepositories'
 import { useT } from '@/hooks/useT'
+import { useMetaStore } from '@/store/metaStore'
+import { useUIStore } from '@/store/uiStore'
 import type { Repository } from '@/types/repository'
 
 export function RepositoryPage() {
@@ -24,6 +28,10 @@ export function RepositoryPage() {
   const [error, setError] = useState<string | null>(null)
   const { repositories } = useRepositories()
   const t = useT()
+  const fetchMeta = useMetaStore(s => s.fetchMeta)
+  const metaByRepo = useMetaStore(s => s.metaByRepo)
+  const loadingRepos = useMetaStore(s => s.loadingRepos)
+  const lang = useUIStore(s => s.lang)
 
   useEffect(() => {
     if (!name) return
@@ -37,6 +45,7 @@ export function RepositoryPage() {
       .then(([repoData, readmeData]) => {
         setRepo(repoData)
         setReadme(readmeData)
+        fetchMeta(repoData, lang)
       })
       .catch((err) => {
         setError(err?.message || '레포지토리를 불러오는데 실패했습니다.')
@@ -71,6 +80,8 @@ export function RepositoryPage() {
         {repo.description && (
           <p className="text-gray-600 dark:text-gray-300 mb-4">{repo.description}</p>
         )}
+
+        <MetaBadges meta={metaByRepo[repo.name] ?? null} loading={loadingRepos.has(repo.name)} isAI />
 
         {/* Stats */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-4">
@@ -190,6 +201,11 @@ export function RepositoryPage() {
           <p>{t.repo.noReadme}</p>
         </div>
       )}
+
+      {/* Content Studio */}
+      <div className="mt-6">
+        <ContentStudio repo={repo} />
+      </div>
     </div>
   )
 }

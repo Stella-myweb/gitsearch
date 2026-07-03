@@ -1,2 +1,7 @@
 export const GITHUB_USERNAME = import.meta.env.VITE_GITHUB_USERNAME || 'Stella-myweb'
 export const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || ''
+export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY || ''
+export const LLM_PROVIDER = import.meta.env.VITE_LLM_PROVIDER || 'openai'
+export const LLM_MODEL = import.meta.env.VITE_LLM_MODEL || 'gpt-4o-mini'
+export const ANTHROPIC_KEY = import.meta.env.VITE_ANTHROPIC_KEY || ''
+export const GEMINI_KEY = import.meta.env.VITE_GEMINI_KEY || ''

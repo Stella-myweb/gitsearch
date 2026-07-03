@@ -22,11 +22,14 @@ export interface EnrichedRepository extends Repository {
   curriculum?: CurriculumMeta
 }
 
-export interface RepositoryMeta {
-  id: number
-  name: string
-  category?: string
-  tags?: string[]
-  featured?: boolean
-  difficulty?: 'beginner' | 'intermediate' | 'advanced'
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced' | ''
+
+export interface AIRepositoryMeta {
+  difficulty: DifficultyLevel
+  category: string
+  learningTime: string
+  recommended: boolean
+  summary: string
+  generatedAt: string
+  generatedBy: 'openai' | 'anthropic' | 'gemini' | 'heuristic'
 }

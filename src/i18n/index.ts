@@ -63,6 +63,15 @@ export const translations = {
       points: '점',
       day: 'Day',
     },
+    content: {
+      studio: '콘텐츠 만들기',
+      tone: '톤',
+      generate: '생성하기',
+      generating: 'AI 생성 중...',
+      copy: '복사',
+      copied: '복사됨',
+      clear: '초기화',
+    },
   },
   en: {
     appName: 'GitSearch',
@@ -127,6 +136,15 @@ export const translations = {
       final: 'Final',
       points: 'pts',
       day: 'Day',
+    },
+    content: {
+      studio: 'Content Studio',
+      tone: 'Tone',
+      generate: 'Generate',
+      generating: 'Generating...',
+      copy: 'Copy',
+      copied: 'Copied',
+      clear: 'Clear',
     },
   },
 } as const
