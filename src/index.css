@@ -1,0 +1,145 @@
+@import 'highlight.js/styles/github.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GitHub-style prose */
+.prose-github {
+  --tw-prose-code: #1f2328;
+  --tw-prose-pre-code: #1f2328;
+  --tw-prose-pre-bg: #f6f8fa;
+}
+
+.prose-github pre code {
+  color: #1f2328 !important;
+  background: transparent !important;
+  font-size: 0.875em;
+}
+
+.prose-github pre {
+  background-color: #f6f8fa !important;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.prose-github code:not(pre code) {
+  background-color: #f6f8fa;
+  color: #1f2328;
+  border: 1px solid #d1d9e0;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+}
+
+.prose-github img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.prose-github table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.prose-github th,
+.prose-github td {
+  border: 1px solid #d1d9e0;
+  padding: 0.5rem 0.75rem;
+}
+
+.prose-github th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+}
+
+.prose-github blockquote {
+  border-left: 4px solid #d1d9e0;
+  color: #57606a;
+  padding-left: 1rem;
+  margin-left: 0;
+}
+
+/* Dark mode prose */
+.dark .prose-github {
+  --tw-prose-body: #e6edf3;
+  --tw-prose-headings: #e6edf3;
+  --tw-prose-links: #58a6ff;
+  --tw-prose-code: #e6edf3;
+  --tw-prose-pre-code: #e6edf3;
+  --tw-prose-pre-bg: #161b22;
+}
+.dark .prose-github pre code {
+  color: #e6edf3 !important;
+  background: transparent !important;
+}
+.dark .prose-github pre {
+  background-color: #161b22 !important;
+  border-color: #30363d;
+}
+.dark .prose-github code:not(pre code) {
+  background-color: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+.dark .prose-github th {
+  background-color: #161b22;
+  color: #e6edf3;
+}
+.dark .prose-github th,
+.dark .prose-github td {
+  border-color: #30363d;
+}
+.dark .prose-github blockquote {
+  border-left-color: #30363d;
+  color: #8b949e;
+}
+
+/* highlight.js dark mode overrides */
+.dark .hljs {
+  background: #161b22 !important;
+  color: #e6edf3 !important;
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-title.function_ {
+  color: #ff7b72 !important;
+}
+.dark .hljs-string,
+.dark .hljs-attr {
+  color: #a5d6ff !important;
+}
+.dark .hljs-comment {
+  color: #8b949e !important;
+}
+.dark .hljs-number,
+.dark .hljs-literal {
+  color: #79c0ff !important;
+}
+.dark .hljs-variable,
+.dark .hljs-name {
+  color: #ffa657 !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d9e0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b949e;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #30363d;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
